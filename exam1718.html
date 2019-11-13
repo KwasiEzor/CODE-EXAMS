@@ -1,0 +1,100 @@
+<meta charset="utf-8">
+
+<script>
+
+/**
+ * Programme qui permet de réserver des tickets de concert
+ * et qui calcule puis affiche le montant à payer.
+ * @author Kwasi EZOR <kwasiezor@gmail.com>
+ * @version 0.1
+ */
+ 
+ 
+ // déclarations des variables
+ 
+var prixTotal, totalJeff, totalChris, totalJamb;
+var nbTicket_Jeff, nbTicket_Chris, nbTicket_Jamb;
+var codeConcert;
+var showDetail;
+var confirmProcess;
+const TARIF_G_JEFF = 26;
+const TARIF_CHRIS = 50;
+const TARIF_JAMB = 15;
+ 
+nbTicket_Jeff = 0;
+nbTicket_Chris = 0;
+nbTicket_Jamb = 0; 
+
+do{
+
+	do{
+		
+		 
+	 //Lecture  et traitement des données
+		 do{
+			codeConcert = parseInt(prompt('Veuillez entrer votre code concert svp Garland Jeffreys(100), Christophe(20), Jambinai(3)!'));
+			
+		 }while(isNaN(codeConcert)||codeConcert<0);
+		 
+		 switch(codeConcert){
+		 
+			case 100 :
+				alert('Vous avez entré le code pour le concert de Garland Jeffreys');
+				alert('Le tarif pour ce concert est de 26 € ');
+				do{
+					nbTicket_Jeff += parseInt(prompt('Veuillez entrer le nombre de ticket svp !'));
+				}while(isNaN(nbTicket_Jeff)||nbTicket_Jeff<0)
+				
+				break;
+			case 20:
+				alert('Vous avez entré le code pour le concert de Christophe');
+				alert('Le tarif pour ce concert est de 50 € ');
+				do{
+					nbTicket_Chris += parseInt(prompt('Veuillez entrer le nombre de ticket svp !'));
+				}while(isNaN(nbTicket_Chris)||nbTicket_Chris<0)
+				
+				break;
+			case 3:
+				alert('Vous avez entré le code pour le concert de Jambinai');
+				alert('Le tarif pour ce concert est  de 15 € ');
+				do{
+					nbTicket_Jamb += parseInt(prompt('Veuillez entrer le nombre de ticket svp !'));
+				}while(isNaN(nbTicket_Jamb)||nbTicket_Jamb<0)
+				
+				break;
+			default:
+				document.write('Aucune sélection');
+		 }
+		
+		prixTotal = (nbTicket_Jeff * TARIF_G_JEFF) + (nbTicket_Chris * TARIF_CHRIS) + (nbTicket_Jamb * TARIF_JAMB) ;
+	}while(confirm('Voulez-vous faire d\'autres achats de tickets ?'));
+
+
+	showDetail = confirm('Voulez-vous un affichage avec un calcul détaillé ?'); // confirmation pour  affichage  d'un calcul détaillé 
+
+	if(!showDetail){// affichage sans détails 
+
+		document.write('<p>Total : '+prixTotal+' €</p>');
+		
+	}else{// affichage avec détails
+				
+			document.write('<p> Votre sélection : </p>');
+			
+			if(nbTicket_Jeff!=0  ){
+				
+				document.write('<p> - '+nbTicket_Jeff+' x Garland Jeffreys (26 €) </p>');
+			}
+			if(nbTicket_Chris!=0){
+			
+				document.write('<p> - '+nbTicket_Chris+' x Christophe (50 €) </p>');
+			}
+			if(nbTicket_Jamb!=0){
+			
+				document.write('<p> - '+nbTicket_Jamb+' x Jambinai (15 €) </p>');
+			} 
+			
+			document.write('<p>Total : '+prixTotal+' €</p>');
+
+	}
+}while(confirm('Voulez-vous recommencer ?'));
+</script>
